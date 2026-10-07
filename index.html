@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Прогулка по городу — дашборд</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <h1>Прогулка по городу</h1>
+      <p class="subtitle">Погода, интересные места и твой маршрут</p>
+    </header>
+
+    <main class="dashboard">
+
+      <!-- Управление городом -->
+      <section class="controls" aria-label="Выбор города">
+        <label for="city-input">Город:</label>
+        <input type="text" id="city-input" placeholder="Например, Санкт-Петербург" value="Санкт-Петербург">
+        <button id="search-btn" type="button">Найти</button>
+        <p id="city-status" class="status" aria-live="polite"></p>
+      </section>
+
+      <!-- Виджет 1: Погода -->
+      <section class="widget" id="weather-widget" aria-labelledby="weather-title">
+        <div class="widget-header">
+          <h2 id="weather-title">🌡️ Погода</h2>
+          <button class="refresh-btn" id="weather-refresh" type="button">Обновить</button>
+        </div>
+        <div class="widget-body">
+          <p id="weather-now" aria-live="polite">Загрузка…</p>
+          <p id="weather-today"></p>
+          <p class="meta" id="weather-meta"></p>
+        </div>
+      </section>
+
+      <!-- Виджет 2: Интересные места -->
+      <section class="widget" id="places-widget" aria-labelledby="places-title">
+        <div class="widget-header">
+          <h2 id="places-title">📍 Что рядом</h2>
+          <button class="refresh-btn" id="places-refresh" type="button">Обновить</button>
+        </div>
+        <div class="widget-body">
+          <ul id="places-list" aria-live="polite">
+            <li>Загрузка…</li>
+          </ul>
+          <p class="meta" id="places-meta"></p>
+        </div>
+      </section>
+
+      <!-- Виджет 3: Заметки -->
+      <section class="widget widget--wide" id="notes-widget" aria-labelledby="notes-title">
+        <div class="widget-header">
+          <h2 id="notes-title">📝 Мой маршрут</h2>
+        </div>
+        <div class="widget-body">
+          <form id="note-form" class="note-form">
+            <label for="note-input" class="visually-hidden">Новая заметка</label>
+            <input type="text" id="note-input" placeholder="Что добавить в маршрут?" maxlength="120">
+            <button type="submit">Добавить</button>
+          </form>
+          <ul id="notes-list"></ul>
+          <p class="meta" id="notes-meta"></p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>Данные: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> · <a href="https://overpass-api.de" target="_blank" rel="noopener">Overpass API</a></p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
